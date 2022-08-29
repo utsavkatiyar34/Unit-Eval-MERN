@@ -63,11 +63,8 @@ async function login(req, res) {
   });
 }
 
-async function getTodo() {}
-async function addTodo() {}
+
 module.exports = {
   register,
-  login,
-  getTodo,
-  addTodo
+  login
 };

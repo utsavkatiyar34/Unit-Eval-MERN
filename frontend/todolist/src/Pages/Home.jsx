@@ -4,6 +4,7 @@ import {useDispatch, useSelector } from 'react-redux';
 import { Navigate} from 'react-router-dom';
 import { Button } from '@mui/material';
 import { logOut } from "../Store/actions";
+import { Todo } from '../Components/Todo';
 
 
 export const Home = () => {
@@ -36,6 +37,8 @@ export const Home = () => {
         >
           Logout
         </Button>
+
+    <Todo/>
     </div>
   )
 }

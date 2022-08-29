@@ -23,12 +23,13 @@ export const Todo = () => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const { loading, data } = useSelector((state) => state.todo);
+  console.log(data);
   const {status} = useSelector((state) => state.login);
   let reqGet = () => {
     dispatch(getToDoLoading());
     axios({
       method: "get",
-      url: "http://localhost:4000/todo",
+      url: "http://localhost:7000/gettodo",
     })
       .then((res) => {
         dispatch(getToDoSuccess(res.data));
@@ -45,14 +46,14 @@ export const Todo = () => {
     dispatch(addToDoLoading());
     axios({
       method: "post",
-      url: "http://localhost:4000/todo",
+      url: "http://localhost:7000/addtodo",
       data: {
-        title: text,
+        taskName: text,
         status: false,
-        id: v4(),
       },
     })
       .then((res) => {
+        
         dispatch(addToDoSuccess(res.data));
       })
       .catch((err) => {
@@ -81,7 +82,7 @@ export const Todo = () => {
     dispatch(deleteToDoLoading());
     axios({
       method: "delete",
-      url: `http://localhost:4000/todo/${id}`,
+      url: `http://localhost:7000/todo/${id}`,
     })
       .then((res) => {
         dispatch(deleteToDoSuccess(res.data));
@@ -134,9 +135,9 @@ export const Todo = () => {
                 textTransform: "uppercase",
                 fontWeight: "600",
               }}
-              key={el.id}
+              key={el._id}
             >
-              {el.title}
+              {el.taskName}
             </div>
             <div>
               <Button

@@ -4,7 +4,8 @@ const app = express();
 const port = 7000;
 
 const connectDb = require("./database/index")
-const { register, login, getTodo, addTodo } = require('./controllers/auth');
+const { register, login } = require('./controllers/auth');
+const {getTodo,addTodo,deleteTodo}=require('./controllers/activity')
 
 function logger(req, res, next) {
     console.log(new Date(), req.method, req.url);
@@ -17,9 +18,9 @@ app.use(logger);
 
 app.post('/register', register);
 app.post('/login', login);
-app.post('/gettoDo', getTodo);
+app.get('/gettoDo', getTodo);
 app.post('/addtodo', addTodo);
-
+app.delete('/todo/:id',deleteTodo)
 connectDb().then(() => {
     app.listen(port, () => {
         console.log("Server is running on port 7000");
