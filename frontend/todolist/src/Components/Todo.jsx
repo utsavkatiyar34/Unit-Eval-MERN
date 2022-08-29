@@ -65,7 +65,7 @@ export const Todo = () => {
     dispatch(patchToDoLoading());
     axios({
       method: "patch",
-      url: `http://localhost:4000/todo/${id}`,
+      url: `http://localhost:7000/todo/${id}`,
       data: {
         status: !status,
       },
