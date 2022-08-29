@@ -4,7 +4,7 @@ const app = express();
 const port = 7000;
 
 const connectDb = require("./database/index")
-const { register, login, getLoggedUser } = require('./controllers/auth');
+const { register, login, getTodo, addTodo } = require('./controllers/auth');
 
 function logger(req, res, next) {
     console.log(new Date(), req.method, req.url);
@@ -18,6 +18,7 @@ app.use(logger);
 app.post('/register', register);
 app.post('/login', login);
 app.post('/gettoDo', getTodo);
+app.post('/addtodo', addTodo);
 
 connectDb().then(() => {
     app.listen(port, () => {
