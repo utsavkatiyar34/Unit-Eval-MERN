@@ -63,10 +63,10 @@ async function login(req, res) {
   });
 }
 
-async function getLoggedUser() {}
+async function getTodo() {}
 
 module.exports = {
   register,
   login,
-  getLoggedUser,
+  getTodo,
 };
