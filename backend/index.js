@@ -17,7 +17,7 @@ app.use(logger);
 
 app.post('/register', register);
 app.post('/login', login);
-app.post('/gettoDo', getLoggedUser);
+app.post('/gettoDo', getTodo);
 
 connectDb().then(() => {
     app.listen(port, () => {
